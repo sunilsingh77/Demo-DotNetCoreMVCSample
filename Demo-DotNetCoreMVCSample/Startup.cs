@@ -16,6 +16,7 @@ namespace Demo_DotNetCoreMVCSample
 {
     public class Startup
     {
+        //Constructor added comments
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
