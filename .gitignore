@@ -5,3 +5,6 @@
 /.vs/Demo-DotNetCoreMVCSample/v16/Server/sqlite3
 /CoreMVC.Data/obj
 /Demo-DotNetCoreMVCSample/obj
+/.vs/Demo-DotNetCoreMVCSample/v16
+/CoreMVC.Data/bin/Debug/netstandard2.0
+/Demo-DotNetCoreMVCSample/bin/Debug/netcoreapp3.1
