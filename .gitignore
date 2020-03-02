@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs/Demo-DotNetCoreMVCSample/v16/Server/sqlite3
+/CoreMVC.Data/obj
+/Demo-DotNetCoreMVCSample/obj
