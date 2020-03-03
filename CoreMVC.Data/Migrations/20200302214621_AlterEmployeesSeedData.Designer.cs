@@ -3,14 +3,16 @@ using CoreMVC.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoreMVC.Data.Migrations
 {
     [DbContext(typeof(CoreMVCDbContext))]
-    partial class CoreMVCDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200302214621_AlterEmployeesSeedData")]
+    partial class AlterEmployeesSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,19 +27,13 @@ namespace CoreMVC.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Department")
+                    b.Property<int?>("Department")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("PhotoPath")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

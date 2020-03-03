@@ -35,7 +35,7 @@ namespace Demo_DotNetCoreMVCSample.Repository
 
         public IEnumerable<Employee> GetAllEmployee()
         {
-            return context.Employees;
+            return  (context.Employees);
         }
 
         public Employee GetEmployee(int Id)
