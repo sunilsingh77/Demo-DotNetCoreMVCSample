@@ -7,12 +7,14 @@ using CoreMVC.Data.Enums;
 using CoreMVC.Data.Models;
 using Demo_DotNetCoreMVCSample;
 using Demo_DotNetCoreMVCSample.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 
 namespace Demo_DotNetCoreMVCSample.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepo _employeeRepository;
