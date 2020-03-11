@@ -3,6 +3,7 @@
 namespace CoreMVC.Data.Migrations
 {
     public partial class Extend_IdentityUser : Migration
+    {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
