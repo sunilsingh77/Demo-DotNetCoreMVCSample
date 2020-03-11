@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CoreMVC.Data.Models
 {
-    public class CoreMVCDbContext : IdentityDbContext
+    public class CoreMVCDbContext : IdentityDbContext<ApplicationUser>
     {
         public CoreMVCDbContext(DbContextOptions<CoreMVCDbContext> options) : base(options) 
         {   

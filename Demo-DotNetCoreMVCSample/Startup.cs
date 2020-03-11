@@ -33,7 +33,7 @@ namespace Demo_DotNetCoreMVCSample
             services.AddDbContextPool<CoreMVCDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CoreMVCSample")));
             services.AddScoped<IEmployeeRepo, EmployeeRepo>();
             services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<CoreMVCDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<CoreMVCDbContext>();
             services.AddControllersWithViews();
             
             services.AddMvc(config => {

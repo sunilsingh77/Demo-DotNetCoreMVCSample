@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Demo_DotNetCoreMVCSample.Attributes;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,8 +10,10 @@ namespace Demo_DotNetCoreMVCSample.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
+        [Required]        
         [EmailAddress]
+        [Remote(action: "IsEmailInUsed", controller: "Account")]
+        [ValidEmailDomain(allowedDomain: "gmail.com", ErrorMessage = "Email domain must be gmail.com")]
         public string Email { get; set; }
 
         [Required]
@@ -20,5 +24,7 @@ namespace Demo_DotNetCoreMVCSample.ViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password",ErrorMessage = "Password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string City { get; set; }
     }
 }
