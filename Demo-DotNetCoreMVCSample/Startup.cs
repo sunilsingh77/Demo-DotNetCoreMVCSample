@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoreMVC.Data.Models;
 using Demo_DotNetCoreMVCSample.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +19,7 @@ namespace Demo_DotNetCoreMVCSample
 {
     public class Startup
     {
-        //Constructor added comments
+        //Constructor added comments added
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,8 +33,15 @@ namespace Demo_DotNetCoreMVCSample
             services.AddDbContextPool<CoreMVCDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CoreMVCSample")));
             services.AddScoped<IEmployeeRepo, EmployeeRepo>();
             services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<CoreMVCDbContext>();
             services.AddControllersWithViews();
-            services.AddMvc();
+            
+            services.AddMvc(config => {
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +59,7 @@ namespace Demo_DotNetCoreMVCSample
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 

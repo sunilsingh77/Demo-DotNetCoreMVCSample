@@ -8,9 +8,11 @@ using Microsoft.Extensions.Logging;
 using Demo_DotNetCoreMVCSample.DTOs;
 using Demo_DotNetCoreMVCSample.Repository;
 using Demo_DotNetCoreMVCSample.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Demo_DotNetCoreMVCSample.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
